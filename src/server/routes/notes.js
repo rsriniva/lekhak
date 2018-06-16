@@ -68,7 +68,7 @@ router.post(`${BASE_URL}`, async (ctx) => {
 router.put(`${BASE_URL}/:id`, async (ctx) => {
   try {
     const noteId = await queries.updateNote(ctx.params.id, ctx.request.body);
-    if (noteId == ctx.params.id) {
+    if (noteId > 0) {
       ctx.status = 200;
       ctx.body = {
         status: 'success',
@@ -94,7 +94,7 @@ router.put(`${BASE_URL}/:id`, async (ctx) => {
 router.delete(`${BASE_URL}/:id`, async (ctx) => {
   try {
     const noteId = await queries.deleteNote(ctx.params.id);
-    if (noteId == ctx.params.id) {
+    if (noteId > 0) {
       ctx.status = 200;
       ctx.body = {
         status: 'success',
