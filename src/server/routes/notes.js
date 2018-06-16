@@ -42,7 +42,7 @@ router.get(`${BASE_URL}/:id`, async (ctx) => {
 router.post(`${BASE_URL}`, async (ctx) => {
   try {
     const noteId = await queries.addNote(ctx.request.body);
-    if (noteId.length) {
+    if (!isNaN(noteId)) {
       ctx.status = 201;
       ctx.body = {
         status: 'success',
